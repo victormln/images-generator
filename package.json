@@ -1,0 +1,24 @@
+{
+  "name": "images-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jimp": "^0.9.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victormln/images-generator.git"
+  },
+  "author": "victormln",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/victormln/images-generator/issues"
+  },
+  "homepage": "https://github.com/victormln/images-generator#readme"
+}
