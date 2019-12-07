@@ -1,0 +1,4 @@
+{
+  "name" : "response",
+  "main" : "./Response.js"
+}
