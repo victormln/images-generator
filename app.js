@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
 
 var fileName = 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png';
 var defaultOutputImagesFolder = 'tmp';
-var destinationFileName = 'testing.png';
+var destinationFileName = defaultOutputImagesFolder + '/' + 'testing.png';
 var imageCaption = 'Text example :D';
 var loadedImage;
 
@@ -48,7 +48,7 @@ app.route('/generate')
                         (err, loadedImage, {x, y}) => {
                             loadedImage.print(font, x, y + 20, 'More text on another line', 50);
                         })
-                    .write(defaultOutputImagesFolder + "/" + destinationFileName);
+                    .write(destinationFileName);
                 res.send(response.success(200, "Created on: " + destinationFileName));
             })
             .catch(function (err) {
