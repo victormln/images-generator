@@ -32,22 +32,26 @@ app.route('/generate')
         jimp.read(fileName)
             .then(function (image) {
                 loadedImage = image;
-                return jimp.loadFont(jimp.FONT_SANS_16_BLACK);
+                return jimp.loadFont(jimp.FONT_SANS_64_BLACK);
             })
             .then(function (font) {
+                var textWidth = jimp.measureText(font, imageCaption);
+                var textHeight = jimp.measureTextHeight(font, imageCaption, textWidth);
                 loadedImage
                     .print(font,
-                        10,
-                        10,
+                        (loadedImage.bitmap.width/2) - (textWidth/2),
+                        loadedImage.bitmap.height/2,
                         {
                             text: imageCaption,
-                            alignmentX: jimp.HORIZONTAL_ALIGN_CENTER,
+                            alignmentX: jimp.HORIZONTAL_ALIGN_LEFT,
                             alignmentY: jimp.VERTICAL_ALIGN_MIDDLE
                         },
-                        50,
+                        150,
+                        150,
                         (err, loadedImage, {x, y}) => {
                             loadedImage.print(font, x, y + 20, 'More text on another line', 50);
                         })
+                    .normalize()
                     .write(destinationFileName);
                 res.send(response.success(200, "Created on: " + destinationFileName));
             })
